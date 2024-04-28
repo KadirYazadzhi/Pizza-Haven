@@ -1,0 +1,476 @@
+#cart1 {
+    transition: transform 0.5s ease-in-out;
+}
+
+#cart1.clicked {
+    transform: scale(1.5);
+}
+
+.product-price-other-class {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8f0000;
+}
+
+
+
+
+.removeProduct {
+    color: #fd0000;
+    cursor: pointer;
+}
+
+
+
+#cart {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff8f6;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+}
+
+#closeCart {
+    text-align: right;
+    cursor: pointer;
+    color: #333;
+    font-size: 24px;
+}
+
+#cartHeader {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.productNew {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.productNew img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+.productNew-info {
+    flex-grow: 1;
+}
+
+.productNew-info strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.productNew-info span {
+    font-size: 16px;
+}
+
+.quantity {
+    width: 40px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#removeProduct {
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 16px;
+}
+
+#totalPrice {
+    margin-top: auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#checkoutBtn, #cancelBtn {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#checkoutBtn {
+    background: rgb(255,181,96);
+    background: linear-gradient(45deg, rgba(255,181,96,1) 0%, rgba(255,139,72,1) 50%, rgba(255,86,32,1) 100%);
+    color: #fff;
+}
+
+#checkoutBtn:hover {
+    background: rgb(255,150,30);
+    background: linear-gradient(45deg, rgba(255,150,30,1) 0%, rgba(255,126,51,1) 50%, rgba(255,79,22,1) 100%);
+}
+
+#cancelBtn {
+    background: rgb(255,97,48);
+    background: linear-gradient(45deg, rgba(255,97,48,1) 0%, rgba(255,79,39,1) 50%, rgba(255,37,29,1) 100%);
+    color: #ffffff;
+}
+
+#cancelBtn:hover {
+    background: rgb(255,42,0);
+    background: linear-gradient(45deg, rgba(255,42,0,1) 0%, rgba(255,34,0,1) 50%, rgba(255,9,0,1) 100%);
+    color: #ffffff;
+}
+
+
+#checkoutBtn:hover {
+    background-color: #555;
+}
+.cart-product {
+    width: 50px;
+    position: absolute;
+    top: 0;
+    margin: 10px;
+    z-index: 10;
+}
+.logo-cart {
+    position: relative;
+    width: 50px;
+    margin: 10px;
+    top: -6px;
+    left: -30px;
+
+}
+@media (max-width: 768px) {
+    #cartIcon {
+        color: #FFFFFF;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        top: 8px;
+        right: 290px;
+        cursor: pointer;
+        z-index: 9999;
+
+    }
+
+
+}
+
+
+
+/* Основен стил за модалния прозорец */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: scroll;
+    z-index: 1000;
+}
+#modalcard {
+    display: none;
+}
+.modal-content {
+    top: -110px;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 2px solid #fd6e34;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: auto;
+}
+@media (max-width: 768px){
+    .modal-content{
+        top: 0px;
+        right: 18px;
+    }
+}
+.close {
+    color: #ff0303;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.close:hover,
+.close:focus {
+    color: #c00000;
+}
+
+/* Стилове за формата и бутоните */
+.cartForm {
+    display: grid;
+    grid-gap: 16px;
+}
+
+.cartLabel {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #d04900;
+}
+
+
+
+
+
+.cartInput {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fafdff;
+    border: 1px solid #ff6500;
+    outline: none;
+    box-shadow: 1px 1px 5px #ff5b00;
+    resize: vertical;
+    max-height: 120px;
+}
+.cartInput:hover {
+    background-color: #fff3ee;
+    border: 2px solid #ff5800;
+    outline: none;
+    transform: scale(1.02);
+    transition: 0.2s;
+    box-shadow: 1px 1px 10px #ff7b15;
+}
+.cartInput:focus {
+    transform: none;
+    box-shadow: 1px 1px 5px #ff7200;
+    border: 3px solid #ff6b00;
+    background-color: #ffefdc;
+
+}
+
+.buttonCheckout {
+    background: rgb(251,157,111);
+    background: linear-gradient(45deg, rgba(251,157,111,1) 0%, rgba(255,162,85,1) 50%, rgba(254,127,73,1) 100%);
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.buttonCheckout:hover {
+    background: rgb(255,142,87);
+    background: linear-gradient(45deg, rgba(255,142,87,1) 0%, rgba(255,138,42,1) 50%, rgba(255,98,32,1) 100%);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: 10%;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+}
+
+
+#messageModal {
+    z-index: 1001;
+    display: none;
+    position: fixed;
+    align-items: center;
+    align-content: center;
+    justify-content: center; /* Добавете този стил за центриране по хоризонтала */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+}
+
+#messageModal .modal-content {
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border: 2px solid #3498db;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    max-height: 90vh; /* Добавете този стил, за да не излиза извън екрана */
+}
+
+#messageModal .close {
+    color: #3498db;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+#messageModal .close:hover,
+#messageModal .close:focus {
+    color: #2c3e50;
+}
+
+#messageContent {
+    font-size: 18px;
+    color: #333;
+}
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: 10%;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+    #messageModal .modal-content {
+        width: 90%;
+        margin: 10%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.img-box  {
+    padding: 20px;
+}
+
+.img-box-small {
+    width: 90%;
+    height: 100%;
+}
+
+.img-box-big {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-right: 30px;
+}
+
+
+
+/* Стилове за червени грешки */
+.error {
+    color: red;
+}
+
+/* Стилове за червени граници на полетата за въвеждане */
+input.error, textarea.error {
+    border: 2px solid red;
+    box-shadow: 1px 1px 5px #fd0000;
+    background-color: #ffeded;
+    transform: none;
+    outline: none;
+}
+input.error:hover, textarea.error:hover {
+    border: 2px solid red;
+    box-shadow: 1px 1px 5px #fd0000;
+    background-color: #ffeded;
+    transform: none;
+    outline: none;
+}
+input.error:focus, textarea.error:focus {
+    border: 2px solid red;
+    box-shadow: 1px 1px 5px #fd0000;
+    background-color: #ffeded;
+    transform: none;
+    outline: none;
+}
+.valid {
+    border: 2px solid green;
+    transform: none;
+    outline: none;
+    box-shadow: 1px 1px 5px #008000FF;
+    background-color: #ecffec;
+}
+.valid:hover {
+    border: 2px solid green;
+    transform: none;
+    outline: none;
+    box-shadow: 1px 1px 5px #008000FF;
+    background-color: #ecffec;
+}
+.valid:focus {
+    border: 2px solid green;
+    transform: none;
+    outline: none;
+    box-shadow: 1px 1px 5px #008000FF;
+    background-color: #ecffec;
+}
+
+
+
+
+
+
+
+.iconCart {
+    margin-right: 100px;
+    float: right;
+    position: relative;
+    width: 30px;
+    margin-top: 23px;
+
+}
+.favouriteIcon {
+    margin-right: 40px;
+    float: right;
+    position: relative;
+    width: 30px;
+    margin-top: 23px;
+}

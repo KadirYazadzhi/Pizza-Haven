@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Haven</title>
+    <link rel="shortcut icon" href="Image/pizza-logo.png" type="image/svg+xml">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Style/Style.css" />
+    <link rel="stylesheet" href="Style/Cart.css" />
+    <link rel="stylesheet" href="Style/Favourite.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<div id="cart">
+    <div style="color: #ff0000" id="closeCart">&#10006;</div>
+    <h2 style="font-size: 30px; font-weight: 600; margin-top: 0; top: 0; color: #272d36;">Shopping Cart</h2>
+    <div id="cartContent"></div>
+    <div id="totalPrice">Total: 0.00 лв.</div>
+    <div class="button-container">
+        <button id="checkoutBtn">Checkout</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
+</div>
+<div id="checkoutModal" class="modal">
+    <div class="modal-content" id="namemodal">
+        <span class="close" id="closeNameModal">&times;</span>
+        <h2>Checkout</h2>
+        <form class="cartForm" id="checkoutForm" data-firstname="" data-lastname="" data-phonenumber="" data-address="" data-deliveryprovider="">
+            <label class="cartLabel" for="firstName">First Name:</label>
+            <input class="cartInput" type="text" id="firstName" name="firstName" required>
+            <span id="firstNameError" class="error"></span>
+
+            <label class="cartLabel" for="lastName">Last Name:</label>
+            <input class="cartInput" type="text" id="lastName" name="lastName" required>
+            <span id="lastNameError" class="error"></span>
+
+            <label class="cartLabel" for="phoneNumber">Phone Number:</label>
+            <input class="cartInput" type="tel" id="phoneNumber" name="phoneNumber" required>
+            <span id="phoneNumberError" class="error"></span>
+
+            <label class="cartLabel" for="address">Address:</label>
+            <textarea class="cartInput" id="address" name="address" required></textarea>
+            <span id="addressError" class="error"></span>
+
+
+            <button class="buttonCheckout" id="next" type="button">Next</button>
+        </form>
+    </div>
+
+    <div class="modalcard" id="modalcard">
+        <div class="modal-content">
+            <span class="close" id="closeCardModal">&times;</span>
+            <h2>Checkout</h2>
+            <form class="cartForm" id="cardForm">
+                <label class="cartLabel" for="cardNumber">Card Number:</label>
+                <input class="cartInput" type="text" id="cardNumber" name="cardNumber" placeholder="Enter your card number" required>
+                <span id="cardNumberError" class="error"></span>
+
+                <label class="cartLabel" for="cardHolder">Card Holder:</label>
+                <input class="cartInput" type="text" id="cardHolder" name="cardHolder" placeholder="Enter the card holder's name" required>
+                <span id="cardHolderError" class="error"></span>
+
+                <label class="cartLabel" for="expiryDate">Expiry Date:</label>
+                <input class="cartInput" type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                <span id="expiryDateError" class="error"></span>
+
+                <label class="cartLabel" for="cvv">CVV:</label>
+                <input class="cartInput" type="text" id="cvv" name="cvv" placeholder="Enter the CVV" required>
+                <span id="cvvError" class="error"></span>
+
+                <button class="buttonCheckout" type="button" id="payNowButton">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAll">&times;</span>
+            <div id="messageContent"></div>
+        </div>
+    </div>
+
+<body>
+
+<!-- Menu -->
+<div class="menu">
+    <nav id="nav">
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">
+            <ion-icon name="grid-outline"></ion-icon>
+        </label>
+
+        <label class="logo">Pizza Haven</label>
+        <img class="iconCart" id="iconCart" src="Image/shopping-bag.png">
+        <img onclick="toggleFavouriteItems()" class="favouriteIcon" id="iconHeart" src="Image/favourite.png">
+        <div id="favourite-items" class="favourite-items">
+            <strong id="favourite-text" class="favourite-strong">Няма добавен елемент в любими.</strong>
+        </div>
+        <ul>
+            <li><a href="#hero-section" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#comment">Comments</a></li>
+        </ul>
+    </nav>
+</div>
+<!-- End Menu -->
+
+<!-- Hero Section -->
+<div class="section flex" id="hero-section">
+    <div class="text">
+        <h1 class="primary">
+            Where Every Slice  <br/>
+            Tells  <span>a Delicious Story</span>
+        </h1>
+
+        <p class="tertiary">
+            In our pizzeria, we blend traditional Italian recipes with modern innovations to provide our customers with a unique taste experience.
+        </p>
+
+        <a href="#menu" class="btn">Explore Menu</a>
+    </div>
+    <div class="visual">
+        <img src="Image/design-page.png" alt="" />
+    </div>
+</div>
+<!-- End Hero Section -->
+
+<!-- How It Works -->
+<div class="section" id="how-it-works">
+    <h2 class="secondary">How It Works</h2>
+
+    <div class="container flex">
+        <div class="box">
+            <h3>Best Quality</h3>
+            <ion-icon name="trophy-outline"></ion-icon>
+            <p>
+                We offer exceptional quality to ensure that each of our pizzas is a sensory delight.
+            </p>
+        </div>
+
+        <div class="box active">
+            <h3>Easy Order</h3>
+            <ion-icon name="timer-outline"></ion-icon>
+            <p>
+                We combine the convenience of easy ordering with <br>seamless delivery,  ensuring our delicious pizzas reach you directly.
+            </p>
+        </div>
+
+        <div class="box">
+            <h3>Fast Delivery</h3>
+            <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+            <p>
+                We maintain delivery speed to
+                satisfy your cravings promptly.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- End How It Works -->
+
+<!-- About -->
+<div class="section" id="about">
+    <div class="container flex">
+        <div class="visual">
+            <img src="Image/design-pizza.png" alt="" />
+        </div>
+        <div class="text">
+            <div class="secondary">About Our Pizzeria</div>
+            <h2 class="primary">50+</h2>
+
+            <h3 class="tertiary">Our Food</h3>
+
+            <p>
+                Indulge in our extensive menu, boasting a diverse selection of pizzas <br>
+                to tantalize every taste bud. From classic favorites to unique <br>
+                creations, there's something to cater to all preferences and cravings.
+            </p>
+
+            <a href="#menu" class="btn">Explore Menu</a>
+        </div>
+    </div>
+</div>
+<!-- End About -->
+
+<!-- Restaurant Menu -->
+<div class="section" id="menu">
+    <div class="container">
+        <ul class="category">
+            <li class="active">All</li>
+            <li>Vegetarian pizza</li>
+            <li>Meat pizza</li>
+            <li>Seafood pizza</li>
+            <li>Vegetable pizza</li>
+        </ul>
+
+        <div class="container">
+            <div class="restaurant-menu">
+                <div class="menu-item">
+                    <img src="Image/pizza-product-1.png" alt="" />
+                    <img id="cart1" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 6px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite1" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+
+                    <div class="title">Pizza Haven | Margherita</div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+                        <div class="price">$14.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img  src="Image/pizza-product-2.png" alt="" />
+                    <img id="cart2" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 10px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite2" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+
+                    <div class="title">Pizza Haven | Supreme</div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+                        <div class="price">$16.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+
+
+
+                <div class="menu-item">
+                    <img src="Image/pizza-product-3.png" alt="" />
+                    <img id="cart3" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 10px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite3" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+
+                    <div class="title">Pizza Haven | Vegetariana</div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+                        <div class="price">$13.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="Image/pizza-product-4.png" alt="" />
+                    <img id="cart4" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 10px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite4" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+
+                    <div class="title">Pizza Haven | Prosciutto </div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+                        <div class="price">$18.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="Image/pizza-product-5.png" alt="" />
+                    <img id="cart5" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 10px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite5" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+
+                    <div class="title">Pizza Haven | Vegetariana</div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+                        <div class="price">$15.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="Image/pizza-product-6.png" alt="" />
+                    <img id="cart6" style="width: 30px; cursor: pointer; display: inline-block; float: right; margin-right: 10px" class="icon" src="Image/shopping-cart.png">
+                    <img id="favourite6" style="width: 25px; cursor: pointer; display: inline-block; float: right; margin-right: 5px; margin-top: 3px" class="icon" src="Image/favourite-new.png">
+                    <div class="title">Pizza Haven | Napoli</div>
+
+                    <div class="location">Blagoevgrad, Bulgaria</div>
+
+                    <div class="order flex">
+
+                        <div class="price">$19.00</div>
+                        <button onclick="openModal()" class="btn btn-menu">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contact" class="contact container">
+    <form>
+        <div class="form">
+            <div class="form-txt">
+                <h1>Contact Us</h1>
+                <span>As you might expect of a company that began as a high-end interiors contractor, we pay strict
+                        attention.
+                </span>
+
+                <div class="icons">
+                    <div class="row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                        </svg>
+                        <div class="info">
+                            <div class="head">Number</div>
+                            <div class="sub-title">089 458 2964</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                        </svg>
+                        <div class="info">
+                            <div class="head">Address</div>
+                            <div class="sub-title">Blagoevgrad, Bulgaria</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                        </svg>
+                        <div class="info">
+                            <div class="head">Email</div>
+                            <div class="sub-title">pizza_haven@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-details">
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <textarea name="message" id="message" cols="52" rows="7" placeholder="Message" required></textarea>
+                <button>SEND MESSAGE</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<section id="comment" class="comments-section">
+    <h2 class="secondaryNew">Comments</h2>
+    <section class="small-section">
+    <div class="comment">
+        <div class="user-info">
+            <img src="Image/user.png" alt="User 1">
+            <h3>Emily Johnson</h3>
+        </div>
+        <p>Incredibly delicious pizzas! I love their juicy and crispy crust, always freshly made and packed with tasty toppings!</p>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="Image/user.png" alt="User 2">
+            <h3>Marcus Williams</h3>
+        </div>
+        <p>Excellent service and exceptional food quality! Every pizza is a true delight for the senses - I can't get enough!</p>
+    </div>
+    <div class="comment">
+        <div class="user-info">
+            <img src="Image/user.png" alt="User 3">
+            <h3>Sophia Martinez</h3>
+        </div>
+        <p>True pizza masters! Every bite of their pizzas is pure pleasure. Definitely my favorite pizza spot in town!</p>
+    </div>
+    </section>
+</section>
+
+<section class="gallery">
+    <h2 style="color: black" class="secondaryNew">Gallery</h2>
+    <div class="pictures">
+        <div class="picture-one">
+            <img class="gallery-image" src="Image/pizza-restaurant-1.jpg">
+        </div>
+        <div class="picture-two">
+            <img class="gallery-image" src="Image/pizza-restaurant-3.jpg">
+        </div>
+        <div class="picture-three">
+            <img class="gallery-image" src="Image/pizza-restaurant-2.jpg">
+        </div>
+    </div>
+</section>
+
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+        <h3>Pizza<span>Haven</span></h3>
+
+        <p class="footer-links">
+            <a href="#hero-section">Home</a>
+            |
+            <a href="#about">About</a>
+            |
+            <a href="#menu">Menu</a>
+            |
+            <a href="#contact">Contact</a>
+            |
+            <a href="#comment">Comments</a>
+        </p>
+
+        <p class="footer-company-name">Copyright © 2024 - All right reserved <br> Designed by: Kadir Yazadzhi</p>
+    </div>
+
+    <div class="footer-center">
+        <div>
+            <div class="fa">
+                <img class="iconNew" src="Image/maps-and-flags.png">
+            </div>
+            <p>Blagoevgrad, Bulgaria</p>
+        </div>
+
+        <div>
+            <div class="fa">
+                <img class="iconNew" src="Image/phone.png">
+            </div>
+            <p>089 458 2964</p>
+        </div>
+        <div>
+            <div class="fa">
+                <img class="iconNew" src="Image/email.png">
+            </div>
+            <p><a href="#">pizza_haven@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About Us</span>
+            We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
+        <div class="footer-icons">
+            <div class="faNew">
+                <img class="iconNewTwo" src="Image/github%20(1).png">
+            </div>
+            <div class="faNew">
+                <img class="iconNewTwo" src="Image/instagram.png">
+            </div>
+            <div class="faNew">
+                <img class="iconNewTwo" src="Image/facebook%20(1).png">
+            </div>
+            <div class="faNew">
+                <img class="iconNewTwo" src="Image/youtube.png">
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+<script type="text/javascript" src="Script/Script.js"></script>
+<script type="text/javascript" src="Script/Cart.js"></script>
+<script type="text/javascript" src="Script/Cart-Other.js"></script>
+<script type="text/javascript" src="Script/Favourite.js"></script>
+</body>
+</html>
