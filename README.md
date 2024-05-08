@@ -24,7 +24,7 @@ Ready to satisfy your pizza cravings? Unfortunately, Pizza Haven is purely ficti
 ![Pizza Menu Image](https://s4.aconvert.com/convert/p3r68-cdx67/aqt6a-vifik.jpg)
 
 ## 📱 Contact
-This website is purely hypothetical, but if you have any questions or feedback about the concept, feel free to reach out to us at kadiryazadzhi@gmail.com. We appreciate your interest!
+This website is purely hypothetical, but if you have any questions or feedback about the concept, feel free to reach out to me at kadiryazadzhi@gmail.com. We appreciate your interest!
 
 Join us at Pizza Haven and experience a simulated pizza paradise - where every simulated slice tells a story. 🍕
 
