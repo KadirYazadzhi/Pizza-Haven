@@ -21,7 +21,7 @@ Pizza Haven is a fictional online platform that hypothetically offers a wide var
 ## 🛒 Get Started
 Ready to satisfy your pizza cravings? Unfortunately, Pizza Haven is purely fictional and not operational. But you can indulge in delicious pizzas from your local pizzeria or order online from popular pizza delivery services like [Domino's](https://www.dominos.com/) and [Pizza Hut](https://www.pizzahut.com/).
 
-![Pizza Menu Image](https://s4.aconvert.com/convert/p3r68-cdx67/aqt6a-vifik.jpg)
+![Pizza Menu Image](Image/github-preview-pizza-haven.png)
 
 ## 📱 Contact
 This website is purely hypothetical, but if you have any questions or feedback about the concept, feel free to reach out to me at kadiryazadzhi@gmail.com. We appreciate your interest!
